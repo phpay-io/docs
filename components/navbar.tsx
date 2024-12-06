@@ -32,29 +32,29 @@ export const NAVLINKS: NavLink[] = [
     href: null,
     component: <NavGetStarted />,
   },
-  {
-    title: "Blog",
-    href: "/blog",
-  },
-  {
-    title: "Examples",
-    href: "#",
-  },
-  {
-    title: "Guides",
-    href: "#",
-  },
-  {
-    title: "Community",
-    href: "#",
-    external: true,
-  },
+//   {
+//     title: "Blog",
+//     href: "/blog",
+//   },
+//   {
+//     title: "Examples",
+//     href: "#",
+//   },
+//   {
+//     title: "Guides",
+//     href: "#",
+//   },
+//   {
+//     title: "Community",
+//     href: "#",
+//     external: true,
+//   },
 ];
 
 export function Navbar() {
   return (
     <nav className="w-full border-b h-16 sticky top-0 z-50 lg:px-4 px-2 backdrop-filter backdrop-blur-xl bg-opacity-5">
-      <div className="sm:p-3 p-1 max-w-[1530px] mx-auto h-full flex items-center justify-between md:gap-2">
+      <div className="w-3/4 m-auto sm:p-3 p-1 max-w-[1530px] mx-auto h-full flex items-center justify-between md:gap-2">
         <div className="flex items-center gap-5">
           <SheetLeftbar />
           <div className="flex items-center gap-4">
@@ -78,15 +78,7 @@ export function Navbar() {
               >
                 <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
               </Link>
-              <Link
-                href="#"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "icon",
-                })}
-              >
-                <TwitterIcon className="h-[1.1rem] w-[1.1rem]" />
-              </Link>
+              
               <ModeToggle />
             </div>
           </div>
@@ -99,8 +91,7 @@ export function Navbar() {
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <HexagonIcon className="w-7 h-7 text-muted-foreground fill-current" />
-      <h2 className="text-md font-bold">AriaDocs</h2>
+      <h2 className="text-lg font-bold text-indigo-600">PHPay</h2>
     </Link>
   );
 }
