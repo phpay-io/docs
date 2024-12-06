@@ -1,0 +1,69 @@
+---
+title: Introduction
+description: PHPay is a library that allows simple and easy implementation with multiple payment gateways.
+---
+
+With PHPay you can implement payments with different gateways simply and easily with an elegant and straightforward unified interface.
+
+## Getting Started
+
+To begin using the PHPay, follow these simple steps:
+
+- install library into projet with:
+
+```bash
+composer require phpay-io/phpay
+```
+
+## Usage
+
+<Tabs defaultValue="index" className="pt-5 pb-1">
+  <TabsList className="">
+    <TabsTrigger value="index">index.php</TabsTrigger>
+    <TabsTrigger value="credentials">credentials.php</TabsTrigger>
+  </TabsList>
+  <TabsContent value="index">
+    ```php {7} showLineNumbers
+        use PHPay\PHPay;
+
+        require_once **DIR** . '/../../vendor/autoload.php';
+        require_once **DIR** . '/credentials.php';
+
+        $client = [
+            'name' => NAME,
+            'cpf_cnpj' => CPF_CNPJ,
+        ];
+
+        $invoice = [
+            'billingType' => 'BOLETO',
+            'value' => 100.00,
+            'description' => 'Teste de fatura',
+            'dueDate' => date('Y-m-d', strtotime('+1 day')),
+        ];
+
+        $qrcode = PHPay::asaas(TOKEN_ASAAS_SANDBOX)
+            ->client($client)
+            ->invoice($invoice, false)
+            ->qrCodePix();
+
+        print_r($qrcode);
+    ```
+
+  </TabsContent>
+  
+  <TabsContent value="credentials">
+    ```php {7} showLineNumbers
+        <?php
+
+        const TOKEN_ASAAS_SANDBOX = '';
+
+        const NAME = '';
+        const CPF_CNPJ = '';
+    ```
+
+  </TabsContent>
+</Tabs>
+
+## Conclusion
+
+PHPay simplifies the integration with multiple payment gateways, offering a clean and unified interface to handle various payment operations effortlessly. With just a few steps, developers can set up the library, manage client information, and generate transactions like invoices and QR codes. By leveraging PHPay, you streamline your payment process, saving time and ensuring a more elegant implementation in your projects.
