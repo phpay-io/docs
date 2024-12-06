@@ -9,12 +9,12 @@ export default function Home() {
       <Link
         href="https://github.com/phpay-io"
         target="_blank"
-        className="mb-5 sm:text-lg flex items-center gap-2 underline underline-offset-4"
+        className="mb-6 sm:text-lg flex items-center gap-2 underline underline-offset-4"
       >
         Siga o PHPay no Github {" "}
         <MoveUpRightIcon className="w-4 h-4 font-extrabold" />
       </Link>
-      <h1 className="text-3xl font-bold mb-4 sm:text-7xl text-indigo-600">
+      <h1 className="text-3xl font-bold mb-8 sm:text-7xl text-indigo-600">
         Uma interface única e vários gateways de pagamento.
       </h1>
       <p className="mb-8 sm:text-xl max-w-[800px] text-muted-foreground ">

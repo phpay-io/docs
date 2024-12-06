@@ -11,7 +11,7 @@ export default function GetStarted() {
   return (
     <Link
       href={`/docs/${currentVersion}${routes[0].href}`}
-      className={buttonVariants({ className: "px-6 bg-indigo-600", size: "lg" })}
+      className={buttonVariants({ className: "px-6 bg-indigo-600 text-white hover:text-slate-950", size: "lg" })}
     >
       Ler Documentação
     </Link>
