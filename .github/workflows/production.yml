@@ -1,18 +1,29 @@
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
+name: 🚀 Production
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_PAGES_TOKEN }}
-          publish_dir: ./dist
+    integration:
+        name: 🧪 Integration
+        runs-on: ubuntu-latest
+        steps:
+            - name: 🚚 Get latest code
+              uses: actions/checkout@v3
+
+            - name: install and build
+              run: 'npm install && npm run build'
+    deploy:
+        name: 🎉 Deploy Production
+        runs-on: ubuntu-latest
+        needs:
+            - integration
+        steps:
+            - name: 📂 Sync last version
+              uses: SamKirkland/FTP-Deploy-Action@4.3.3
+              with:
+                  local-dir: ./out
+                  server: ${{ secrets.ftp_server }}
+                  username: ${{ secrets.ftp_user }}
+                  password: ${{ secrets.ftp_password }}
