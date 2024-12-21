@@ -14,10 +14,10 @@ const VersionContextProvider = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "PHPay - Biblioteca de integração multi gateways php",
+  title: "PHPay - Integração de Gateways de Pagamento.",
   metadataBase: new URL("https://phpay.io/"),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "O PHPay é uma biblioteca PHP que tem o objetivo tornar o trabalho de integrações com gateways de pagamento mais simples e descomplicadas, facilitando a conexão entre tecnologia e negócios em produtos de software.",
 };
 
 export default function RootLayout({

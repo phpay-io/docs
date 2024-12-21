@@ -1,64 +1,51 @@
 ---
-title: Introduction
-description: PHPay is a library that allows simple and easy implementation with multiple payment gateways.
+title: Introdução
+O PHPay é uma biblioteca PHP que tem o objetivo tornar o trabalho de integrações com gateways de pagamento mais simples e descomplicadas, facilitando a conexão entre tecnologia e negócios em produtos de software.
 ---
-
-With PHPay you can implement payments with different gateways simply and easily with an elegant and straightforward unified interface.
 
 ## Getting Started
 
-To begin using the PHPay, follow these simple steps:
+Para iniciar você precisa instalar o pacote disponível no packagist.org, para isso siga os passos abaixo:
 
-- install library into projet with:
+- Passo 1 - 🏗️ Instalação
 
 ```bash
 composer require phpay-io/phpay
 ```
 
-## Usage
+## ⏯️ Usage
 
-<Tabs defaultValue="index" className="pt-5 pb-1">
+<Tabs defaultValue="asaas" className="pt-5 pb-1">
   <TabsList className="">
-    <TabsTrigger value="index">index.php</TabsTrigger>
-    <TabsTrigger value="credentials">credentials.php</TabsTrigger>
+    <TabsTrigger value="asaas">Asaas</TabsTrigger>
+    <TabsTrigger value="efi"Efí</TabsTrigger>
   </TabsList>
-  <TabsContent value="index">
+  <TabsContent value="asaas">
     ```php {7} showLineNumbers
-        use PHPay\PHPay;
+    /**
+    * @var AsaasGateway $phpay
+    */
+    $phpay = new PHPay(new AsaasGateway(TOKEN_ASAAS_SANDBOX));
 
-        require_once **DIR** . '/../../vendor/autoload.php';
-        require_once **DIR** . '/credentials.php';
-
-        $client = [
-            'name' => NAME,
-            'cpf_cnpj' => CPF_CNPJ,
-        ];
-
-        $invoice = [
-            'billingType' => 'BOLETO',
-            'value' => 100.00,
-            'description' => 'Teste de fatura',
-            'dueDate' => date('Y-m-d', strtotime('+1 day')),
-        ];
-
-        $qrcode = PHPay::asaas(TOKEN_ASAAS_SANDBOX)
-            ->client($client)
-            ->invoice($invoice, false)
-            ->qrCodePix();
-
-        print_r($qrcode);
+    $phpay
+        ->charge($charge)
+        ->setCustomer($customer)
+        ->create();
     ```
 
   </TabsContent>
   
-  <TabsContent value="credentials">
+  <TabsContent value="efi">
     ```php {7} showLineNumbers
-        <?php
+        /**
+        * @var EfiGateway $phpay
+        */
+        $phpay = new PHPay(new EfiGateway(CLIENT_ID, CLIENT_SECRET));
 
-        const TOKEN_ASAAS_SANDBOX = '';
-
-        const NAME = '';
-        const CPF_CNPJ = '';
+        $phpay
+            ->charge($charge)
+            ->setCustomer($customer)
+            ->create();
     ```
 
   </TabsContent>
