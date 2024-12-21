@@ -13,7 +13,7 @@ const v1_0_0_ROUTES: EachRoute[] = [
     href: "/getting-started",
     noLink: true,
     items: [
-      { title: "Introduction", href: "/introduction" },
+      { title: "Introdução", href: "/introduction" },
       {
         title: "Installation",
         href: "/installation",
