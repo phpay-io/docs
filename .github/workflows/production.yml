@@ -1,25 +1,26 @@
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 name: 🚀 Production
 
 jobs:
-    deploy:
-        name: 🎉 Deploy Production
-        environment: production
-        runs-on: ubuntu-latest
-        steps:
-            - name: 🚚 Get latest code
-              uses: actions/checkout@v3
+  deploy:
+    name: 🎉 Deploy Production
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
 
-            - name: install and build
-              run: 'npm install && npm run build'
+      - name: install and build
+        run: 'npm install && npm run build'
 
-            - name: 📂 Sync last version
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ secrets.ftp_server }}
-                  username: ${{ secrets.ftp_user }}
-                  password: ${{ secrets.ftp_password }}
-                  local-dir: ./out/
+      - name: 📂 Sync last version
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_password }}
+          local-dir: ./out/
+          dangerous-clean-slate: true
