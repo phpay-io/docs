@@ -5,8 +5,8 @@ on:
 name: 🚀 Production
 
 jobs:
-    integration:
-        name: 🧪 Integration
+    deploy:
+        name: 🎉 Deploy Production
         runs-on: ubuntu-latest
         steps:
             - name: 🚚 Get latest code
@@ -14,12 +14,7 @@ jobs:
 
             - name: install and build
               run: 'npm install && npm run build'
-    deploy:
-        name: 🎉 Deploy Production
-        runs-on: ubuntu-latest
-        needs:
-            - integration
-        steps:
+
             - name: 📂 Sync last version
               uses: SamKirkland/FTP-Deploy-Action@4.3.3
               with:
